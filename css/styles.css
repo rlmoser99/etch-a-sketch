@@ -3,9 +3,12 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    width: 75vw;
+    height: 75vh;
+    margin: 30px auto;
 }
 
 .grid {
     border: 1px solid black;
-    height: 50px;
+    height: 100%;
 }
