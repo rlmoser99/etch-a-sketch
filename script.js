@@ -1,10 +1,11 @@
 const container = document.querySelector('.container');
 
-function addGridItem () {
-    let gridItem = document.createElement('div');
-    gridItem.classList.add('grid');
-    container.insertAdjacentElement('beforeend', gridItem);
-    console.log("addGridfunction is here")
+function addGridItem (j) {
+    for (let i = 1; i <= j; i++) {
+        let gridItem = document.createElement('div');
+        gridItem.classList.add('grid');
+        container.insertAdjacentElement('beforeend', gridItem);
+    }
 }
 
-addGridItem();
+addGridItem(16);
