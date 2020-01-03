@@ -20,7 +20,7 @@ addGridItem(gridArea);
 
 let gridItems = document.querySelectorAll('.grid');
 
-function blackColor(    ) {
+function blackColor() {
     this.style.backgroundColor = '#000000';
 }
 
@@ -50,3 +50,13 @@ function refreshPage() {
 }
 
 clearButton.addEventListener('click', refreshPage);
+
+// Rainbow
+colorButtons = document.querySelectorAll('.color-choice');
+
+function whatColor(e) {
+    // this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    console.log(e.target.dataset.color);
+}
+
+colorButtons.forEach(colorButton => colorButton.addEventListener('click', whatColor))
