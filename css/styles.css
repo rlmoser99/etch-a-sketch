@@ -7,6 +7,13 @@
 }
 
 .grid {
-    /* border: 1px solid black; */
     height: 100%;
+}
+
+.grid-black {
+    background-color: #000000;
+}
+
+.grid-grey {
+    background-color: #d2d2d2;
 }
