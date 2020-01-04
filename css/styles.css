@@ -1,5 +1,13 @@
 /* Background pattern from Total Subtle Patterns */
 
+@import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
+
+@font-face {
+    font-family: Audiowide;
+    src: url(../fonts/Audiowide/Audiowide-Regular.ttf);
+    font-weight: 400;
+  }
+
 body {
     background-image: url(../img/wild_oliva/wild_oliva.png);
 }
@@ -20,4 +28,10 @@ body {
 .grid-color {
     background-color: #000000;
     transition: all 0.5s;
+}
+
+.mouse-a-sketch {
+    font-family: Audiowide, cursive;
+    font-size: 2em;
+    text-align: center;
 }
