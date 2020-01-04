@@ -1,43 +1,43 @@
 // Page Set-Up 
 const container = document.querySelector('.container');
-// let gridItems = document.querySelectorAll('.grid');
 const sizeButton = document.querySelector('.size');
 const clearButton = document.querySelector('.clear');
 const gridColor = document.querySelector('.grid-color')
+const cls = ['grid-color', 'black', 'rainbow'];
 
 function createGrid (width, area) { 
     for (let i = 1; i <= area; i++) {
         let gridItem = document.createElement('div');
-        gridItem.classList.add('grid');
-        gridItem.classList.add(`${i}`);
         container.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
         container.style.gridTemplateRows = `repeat(${width}, 1fr)`;
         container.insertAdjacentElement('beforeend', gridItem);
-    }
-    let gridItems = document.querySelectorAll('.grid');
-    gridItems.forEach(gridItem => gridItem.addEventListener('mouseover', colorGrid))
+    } 
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', colorGrid))
 }
 
 // Create default grid on page load
 createGrid(4, 16);
 
-// Coloring the Grid 
+// Coloring the Grid - Make a function & css class for each color
 function colorGrid() {
-    // Need to figure out which color to use
-    this.classList.add('grid-black')
+    // gridItems.forEach(gridItem => gridItem.addEventListener('mouseover', colorGrid))
+    // Need do remove classes from grid Item gridItem.classList.remove(...cls);
+    this.classList.add('grid-color');
+    // console.log('new color needed')
 }
 
 function sizePrompt () {
-    let gridItems = document.querySelectorAll('.grid');
-    gridItems.forEach(gridItem => gridItem.remove());
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.remove());
     userNumber = prompt('How many squares would you like on each side?')
     userArea = userNumber * userNumber;
     createGrid(userNumber, userArea)
 }
 
 function eraseColor() {
-    let gridItems = document.querySelectorAll('.grid');
-    gridItems.forEach(gridItem => gridItem.classList.remove('grid-color'));
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.classList.remove(...cls));
 }
 
 // Color Choices
@@ -49,29 +49,23 @@ function updateColor(e) {
     switch (e.target.dataset.color) {
         case 'black':
             console.log('black was chosen');
-            // gridColor.setAttribute('style', `backgroundColor = #000000`);
-            // gridColor.style.backgroundColor = '#000000';
+            gridColor.style.backgroundColor = '#000000';
             break;
         case 'rainbow':
             console.log('rainbow was chosen');
-            // gridColor.setAttribute('style', `backgroundColor = hsl(${Math.random() * 360}, 100%, 50%)`);
-            // gridColor.style.backgroundColor = '#010101';
+            gridColor.style.backgroundColor = '#FF0000';
             break;
         case 'gray':
             console.log('grey was chosen');
-            // this.classList.add('grid-grey')
-            // gridColor.setAttribute('style', `backgroundColor = #d2d2d2`);
-            // gridColor.style.backgroundColor = '#050505';
+            gridColor.style.backgroundColor = '#808080';
             break;
         case 'eraser':
             console.log('eraser was chosen');
-            // gridColor.setAttribute('style', `backgroundColor = #ffffff`);
-            // gridColor.style.backgroundColor = '#565656';
+            gridColor.style.backgroundColor = '#0000FF';
             break;
         default:
             console.log('default was given');
-            // gridColor.setAttribute('style', `backgroundColor = #d5d5d5`);
-            // gridColor.style.backgroundColor = '#000000';
+            gridColor.style.backgroundColor = '#000000';
             break;
     }    
 }
