@@ -3,7 +3,7 @@ const container = document.querySelector('.container');
 const sizeButton = document.querySelector('.size');
 const clearButton = document.querySelector('.clear');
 const gridColor = document.querySelector('.grid-color')
-const cls = ['grid-color', 'black', 'rainbow'];
+const classColors = ['grid-color', 'black', 'rainbow'];
 
 function createGrid (width, area) { 
     for (let i = 1; i <= area; i++) {
@@ -37,7 +37,7 @@ function sizePrompt () {
 
 function eraseColor() {
     let gridPixels = container.querySelectorAll('div');
-    gridPixels.forEach(gridPixel => gridPixel.classList.remove(...cls));
+    gridPixels.forEach(gridPixel => gridPixel.classList.remove(...classColors));
 }
 
 // Color Choices
@@ -74,3 +74,10 @@ function updateColor(e) {
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', updateColor))
 sizeButton.addEventListener('click', sizePrompt);
 clearButton.addEventListener('click', eraseColor);
+
+// To Do List
+// random RGB button
+// grayscale button: 10% of black to it so that only after 10 passes is the square completely black
+// Add color picker, so user can choose any color
+// Make container square and responsive
+// Add keyboard functionality
