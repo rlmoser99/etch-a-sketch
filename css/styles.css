@@ -6,10 +6,16 @@
     font-family: Audiowide;
     src: url(../fonts/Audiowide/Audiowide-Regular.ttf);
     font-weight: 400;
-  }
+}
 
 body {
     background-image: url(../img/wild_oliva/wild_oliva.png);
+}
+
+.mouse-o-sketch {
+    font-family: Audiowide, cursive;
+    font-size: 2em;
+    text-align: center;
 }
 
 .container {
@@ -30,8 +36,22 @@ body {
     transition: all 0.5s;
 }
 
-.mouse-a-sketch {
-    font-family: Audiowide, cursive;
-    font-size: 2em;
-    text-align: center;
+.pixel-black {
+    background-color: #000000;
+    transition: all 0.5s;
+}
+
+.pixel-rainbow {
+    background-color: #ff0000;
+    transition: all 0.5s;
+}
+
+.pixel-gray {
+    background-color: #d3d3d3;
+    transition: all 0.5s;
+}
+
+.pixel-eraser {
+    background-color: #ffffff;
+    transition: all 0.5s;
 }
