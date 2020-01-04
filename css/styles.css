@@ -1,3 +1,9 @@
+/* Background pattern from Total Subtle Patterns */
+
+body {
+    background-image: url(../img/wild_oliva/wild_oliva.png);
+}
+
 .container {
     border: 5px solid red;
     display: grid;
@@ -8,6 +14,7 @@
 
 .container > * {
     height: 100%;
+    background-color: #ffffff;
 }
 
 .grid-color {
