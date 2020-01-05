@@ -119,7 +119,7 @@ console.log(container.clientWidth);
 // container.setAttribute('height', container.clientWidth);
 
 // To Do List
+// clean up logic for adding class names vs. styles in javascript
 // grayscale button: 10% of black to it so that only after 10 passes is the square completely black
 // Add color picker, so user can choose any color
-// Make container square and responsive
 // A slide bar for pixel size

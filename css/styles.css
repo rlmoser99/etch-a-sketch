@@ -29,8 +29,9 @@ body {
     display: grid;
     border-radius: 10px;
     width: auto;
-    height: 280px;
-    margin-top: 15px;
+    height: 90vw;
+    width: 90vw;
+    margin: 15px auto;
 }
 
 .container > * {
@@ -51,6 +52,8 @@ button {
 .buttons {
     display: flex;
     justify-content: space-between;
+    width: 90vw;
+    margin: 0 auto;
 }
 
 /* .grid-color {
@@ -77,8 +80,8 @@ button {
     /* transition: all 0.5s; */
 }
 
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
     .container {
         height: 550px;
     }
-}
+} */
