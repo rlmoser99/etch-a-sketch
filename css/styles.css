@@ -12,46 +12,73 @@ body {
     background-image: url(../img/wild_oliva/wild_oliva.png);
 }
 
+.wrapper {
+    margin: 0 10px;
+}
+
 .mouse-o-sketch {
     font-family: Audiowide, cursive;
     font-size: 2em;
     text-align: center;
+    margin: 30px;
+    color: red;
 }
 
 .container {
-    border: 5px solid red;
+    border: 10px solid #22255f;
     display: grid;
-    width: 75vw;
-    height: 75vh;
-    margin: 30px auto;
+    border-radius: 10px;
+    width: auto;
+    height: 280px;
+    margin-top: 15px;
 }
 
 .container > * {
     height: 100%;
     background-color: #ffffff;
-}
-
-.grid-color {
-    background-color: #000000;
     transition: all 0.5s;
 }
+
+button {
+    font-family: Audiowide, cursive;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px 0;
+    color: red;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .grid-color {
+    background-color: #000000;
+    transition: all 0.5s;
+} */
 
 .pixel-black {
     background-color: #000000;
-    transition: all 0.5s;
+    /* transition: all 0.5s; */
 }
 
-.pixel-rainbow {
-    background-color: #ff0000;
+/* .pixel-rainbow {
     transition: all 0.5s;
-}
+} */
 
 .pixel-gray {
     background-color: #d3d3d3;
-    transition: all 0.5s;
+    /* transition: all 0.5s; */
 }
 
 .pixel-eraser {
     background-color: #ffffff;
-    transition: all 0.5s;
+    /* transition: all 0.5s; */
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+        height: 550px;
+    }
 }

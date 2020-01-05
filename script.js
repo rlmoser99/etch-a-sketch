@@ -35,26 +35,41 @@ function colorGrid(color) {
         gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
         gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels)) 
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', rainbowPixels)) 
+    } else if (color === 'gray'){
+        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
+        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
+        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', grayPixels)) 
     } else {
         gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
+        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
         gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels))
-        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', grayPixels)) 
+        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', erasePixels)) 
     }
 }
 
 function blackPixels() {
     this.classList.remove(...classColors);
     this.classList.add('pixel-black');
+    this.style.backgroundColor = '#000000';
 }
 
 function rainbowPixels() {
     this.classList.remove(...classColors);
     this.classList.add('pixel-rainbow');
+    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
 }
 
 function grayPixels() {
     this.classList.remove(...classColors);
     this.classList.add('pixel-gray');
+    // this.style.backgroundColor = `rgb(0, 0, 0, .5)`;
+    this.style.backgroundColor = '#d3d3d3';
+}
+
+function erasePixels() {
+    // this.classList.remove(...classColors);
+    // this.classList.add('pixel-black');
+    this.style.backgroundColor = '#ffffff';
 }
 
 function sizePrompt (gridNumber, gridArea, color) {
@@ -68,13 +83,13 @@ function sizePrompt (gridNumber, gridArea, color) {
 function eraseColor() {
     let gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.classList.remove(...classColors));
+    gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = '#ffffff');
 }
 
 // Color Choices
 colorButtons = document.querySelectorAll('.color-choice');
 
 function updateColor(event) {
-    // this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
     switch (event.target.dataset.color) {
         case 'black':
             createGrid(gridNumber, gridArea, 'black')
@@ -86,7 +101,7 @@ function updateColor(event) {
             createGrid(gridNumber, gridArea, 'gray')
             break;
         case 'eraser':
-            console.log('eraser was chosen');
+            createGrid(gridNumber, gridArea, 'eraser')
             break;
         default:
             createGrid(gridNumber, gridArea, 'black')
@@ -99,8 +114,12 @@ colorButtons.forEach(colorButton => colorButton.addEventListener('click', update
 sizeButton.addEventListener('click', sizePrompt);
 clearButton.addEventListener('click', eraseColor);
 
+console.log(container.clientWidth);
+// container.style.height = container.clientWidth;
+// container.setAttribute('height', container.clientWidth);
+
 // To Do List
-// random RGB button
 // grayscale button: 10% of black to it so that only after 10 passes is the square completely black
 // Add color picker, so user can choose any color
 // Make container square and responsive
+// A slide bar for pixel size
