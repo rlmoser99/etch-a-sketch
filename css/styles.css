@@ -56,8 +56,9 @@ button {
     margin: 0 auto;
 }
 
-/* @media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
     .container {
-        height: 550px;
+        width: 50vw;
+        height: 50vw;
     }
-} */
+}

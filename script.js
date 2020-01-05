@@ -3,8 +3,11 @@ const container = document.querySelector('.container');
 const sizeButton = document.querySelector('.size');
 const clearButton = document.querySelector('.clear');
 const gridColor = document.querySelector('.grid-color')
+// const userColorPicker = document.querySelector('#input-color')
+colorButtons = document.querySelectorAll('.color-choice');
 let gridNumber;
 let gridArea;
+// var userPixel;
 
 function createGrid (gridNumber, gridArea, color) { 
     for (let i = 1; i <= gridArea; i++) {
@@ -22,6 +25,7 @@ createGrid(10, 100, 'default');
 
 function colorGrid(color) {
     let gridPixels = container.querySelectorAll('div');
+    // console.log(userPixel);
     if (!color) {
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels))
     } else if (color === 'black' || color === 'default'){
@@ -32,10 +36,16 @@ function colorGrid(color) {
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', rainbowPixels)) 
     } else if (color === 'gray'){
         removeListeners();
-        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', grayPixels)) 
+        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', grayPixels))
+    } else if (color === 'eraser'){
+        removeListeners();
+        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', erasePixels))  
+    // } else if (color === userPixel){
+    //     removeListeners();
+    //     gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', userPixels)) 
     } else {
         removeListeners();
-        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', erasePixels)) 
+        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels))
     }
 }
 
@@ -57,8 +67,12 @@ function rainbowPixels() {
     this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
 }
 
+// function userPixels() {
+//     this.style.backgroundColor = userPixel;
+// }
+
 function grayPixels() {
-    // remove class name from other all color functions - or parent function?
+    console.log(this.style.backgroundColor);
     switch (this.style.backgroundColor) {
         case 'rgb(225, 225, 225)':
             this.style.backgroundColor = `rgb(200, 200, 200)`;           
@@ -97,17 +111,19 @@ function grayPixels() {
             this.style.backgroundColor = `rgb(225, 225, 225)`;
             break;
     }
-    
 }
 
 function erasePixels() {
     this.style.backgroundColor = '#ffffff';
 }
+
 function removeListeners() {
     let gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels))
+    // gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', userPixels)) 
+    gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', erasePixels)) 
 }
 
 function sizePrompt (gridNumber, gridArea, color) {
@@ -118,14 +134,12 @@ function sizePrompt (gridNumber, gridArea, color) {
     createGrid(gridNumber, gridArea, color)
 }
 
-function eraseColor() {
+function eraseAllColor() {
     let gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = '#ffffff');
 }
 
 // Color Choices
-colorButtons = document.querySelectorAll('.color-choice');
-
 function updateColor(event) {
     switch (event.target.dataset.color) {
         case 'black':
@@ -146,12 +160,19 @@ function updateColor(event) {
     }    
 }
 
+// function userColorSelection(event) {
+//     userPixel = event.target.value;
+//     createGrid(gridNumber, gridArea, userPixel);
+// }
+
 // Event Listeners
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', updateColor))
 sizeButton.addEventListener('click', sizePrompt);
-clearButton.addEventListener('click', eraseColor);
+clearButton.addEventListener('click', eraseAllColor);
+// userColorPicker.addEventListener('change', userColorSelection, false)
 
 // To Do List
-// grayscale button: 10% of black to it so that only after 10 passes is the square completely black
 // Add color picker, so user can choose any color
+// Is eraser repitive?
 // A slide bar for pixel size
+// refactor grayscale to use data-set number * 10 for gradient.
