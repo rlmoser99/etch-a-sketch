@@ -18,7 +18,7 @@ function createGrid (gridNumber, gridArea, color) {
 }
 
 // Create default grid on page load
-createGrid(4, 16, 'default');
+createGrid(10, 100, 'default');
     
 function colorGrid(color) {
     let gridPixels = container.querySelectorAll('div');
@@ -105,7 +105,6 @@ function sizePrompt (gridNumber, gridArea, color) {
 
 function eraseColor() {
     let gridPixels = container.querySelectorAll('div');
-    gridPixels.forEach(gridPixel => gridPixel.classList.remove(...classColors));
     gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = '#ffffff');
 }
 
