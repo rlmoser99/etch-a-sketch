@@ -171,6 +171,7 @@ clearButton.addEventListener('click', eraseAllColor);
 userColorPicker.addEventListener('change', userColorSelection, false)
 
 // To Do List
+// re-sizing breaks hover colors and clear button -super slow?
 // Would using var help with re-declaring variables
 // A slide bar for pixel size
 // refactor grayscale to use data-set number * 10 for gradient.
