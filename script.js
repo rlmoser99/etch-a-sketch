@@ -14,12 +14,12 @@ function createGrid (gridNumber, gridArea, color) {
         container.insertAdjacentElement('beforeend', gridItem);
     } 
     let gridPixels = container.querySelectorAll('div');
-    gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', colorGrid(color)))
+    gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', colorGrid(color)));
 }
 
 // Create default grid on page load
 createGrid(10, 100, 'default');
-    
+
 function colorGrid(color) {
     let gridPixels = container.querySelectorAll('div');
     if (!color) {
@@ -39,6 +39,16 @@ function colorGrid(color) {
     }
 }
 
+// Don't think this is neeeded
+// function removeGray() {
+//     let gridPixels = container.querySelectorAll('div');
+//     gridPixels.forEach(function(gridPixel) {
+//         if (gridPixel.classList.value === 'gray-pixel') {
+//             gridPixel.classList.remove('gray-pixel')  
+//         }
+//     })
+// }
+
 function blackPixels() {
     this.style.backgroundColor = '#000000';
 }
@@ -48,11 +58,10 @@ function rainbowPixels() {
 }
 
 function grayPixels() {
-    // maybe add a class name to detect if process has started
     // remove class name from other all color functions - or parent function?
     switch (this.style.backgroundColor) {
         case 'rgb(225, 225, 225)':
-            this.style.backgroundColor = `rgb(200, 200, 200)`;
+            this.style.backgroundColor = `rgb(200, 200, 200)`;           
             break;
         case 'rgb(200, 200, 200)':
             this.style.backgroundColor = `rgb(175, 175, 175)`;
@@ -77,6 +86,12 @@ function grayPixels() {
             break;
         case 'rgb(25, 25, 25)':
             this.style.backgroundColor = `rgb(0, 0, 0)`;
+            this.classList.add('gray-pixel');
+            break;
+        case 'rgb(0, 0, 0)':
+            if (this.classList.value !== 'gray-pixel') {
+                this.style.backgroundColor = `rgb(225, 225, 225)`;
+            }
             break;
         default:
             this.style.backgroundColor = `rgb(225, 225, 225)`;
