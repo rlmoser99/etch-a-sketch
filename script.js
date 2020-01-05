@@ -72,7 +72,6 @@ function rainbowPixels() {
 // }
 
 function grayPixels() {
-    console.log(this.style.backgroundColor);
     switch (this.style.backgroundColor) {
         case 'rgb(225, 225, 225)':
             this.style.backgroundColor = `rgb(200, 200, 200)`;           
@@ -173,6 +172,6 @@ clearButton.addEventListener('click', eraseAllColor);
 
 // To Do List
 // Add color picker, so user can choose any color
-// Is eraser repitive?
 // A slide bar for pixel size
 // refactor grayscale to use data-set number * 10 for gradient.
+// Mobile touch screens name change to "Touch-O-Sketch"
