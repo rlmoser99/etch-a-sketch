@@ -3,11 +3,11 @@ const container = document.querySelector('.container');
 const sizeButton = document.querySelector('.size');
 const clearButton = document.querySelector('.clear');
 const gridColor = document.querySelector('.grid-color')
-// const userColorPicker = document.querySelector('#input-color')
+const userColorPicker = document.querySelector('#input-color')
 colorButtons = document.querySelectorAll('.color-choice');
 let gridNumber;
 let gridArea;
-// var userPixel;
+var userPixel;
 
 function createGrid (gridNumber, gridArea, color) { 
     for (let i = 1; i <= gridArea; i++) {
@@ -40,9 +40,9 @@ function colorGrid(color) {
     } else if (color === 'eraser'){
         removeListeners();
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', erasePixels))  
-    // } else if (color === userPixel){
-    //     removeListeners();
-    //     gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', userPixels)) 
+    } else if (color === userPixel){
+        removeListeners();
+        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', userPixels)) 
     } else {
         removeListeners();
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels))
@@ -67,9 +67,9 @@ function rainbowPixels() {
     this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
 }
 
-// function userPixels() {
-//     this.style.backgroundColor = userPixel;
-// }
+function userPixels() {
+    this.style.backgroundColor = userPixel;
+}
 
 function grayPixels() {
     switch (this.style.backgroundColor) {
@@ -121,7 +121,7 @@ function removeListeners() {
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels))
-    // gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', userPixels)) 
+    gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', userPixels)) 
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', erasePixels)) 
 }
 
@@ -159,19 +159,19 @@ function updateColor(event) {
     }    
 }
 
-// function userColorSelection(event) {
-//     userPixel = event.target.value;
-//     createGrid(gridNumber, gridArea, userPixel);
-// }
+function userColorSelection(event) {
+    userPixel = event.target.value;
+    createGrid(gridNumber, gridArea, userPixel);
+}
 
 // Event Listeners
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', updateColor))
 sizeButton.addEventListener('click', sizePrompt);
 clearButton.addEventListener('click', eraseAllColor);
-// userColorPicker.addEventListener('change', userColorSelection, false)
+userColorPicker.addEventListener('change', userColorSelection, false)
 
 // To Do List
-// Add color picker, so user can choose any color
+// Would using var help with re-declaring variables
 // A slide bar for pixel size
 // refactor grayscale to use data-set number * 10 for gradient.
 // Mobile touch screens name change to "Touch-O-Sketch"
