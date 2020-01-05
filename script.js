@@ -3,7 +3,6 @@ const container = document.querySelector('.container');
 const sizeButton = document.querySelector('.size');
 const clearButton = document.querySelector('.clear');
 const gridColor = document.querySelector('.grid-color')
-const classColors = ['grid-color', 'pixel-black', 'pixel-rainbow', 'pixel-gray'];
 let gridNumber;
 let gridArea;
 
@@ -23,53 +22,45 @@ createGrid(4, 16, 'default');
     
 function colorGrid(color) {
     let gridPixels = container.querySelectorAll('div');
-    if (color === 'default') {
+    if (!color) {
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels))
-    } else if (!color) {
-        gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels))
-    } else if (color === 'black'){
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels)) 
+    } else if (color === 'black' || color === 'default'){
+        removeListeners();
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels)) 
     } else if (color === 'rainbow'){
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels)) 
+        removeListeners();
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', rainbowPixels)) 
     } else if (color === 'gray'){
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
+        removeListeners();
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', grayPixels)) 
     } else {
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
-        gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels))
+        removeListeners();
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', erasePixels)) 
     }
 }
 
 function blackPixels() {
-    this.classList.remove(...classColors);
-    this.classList.add('pixel-black');
     this.style.backgroundColor = '#000000';
 }
 
 function rainbowPixels() {
-    this.classList.remove(...classColors);
-    this.classList.add('pixel-rainbow');
     this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
 }
 
 function grayPixels() {
-    this.classList.remove(...classColors);
-    this.classList.add('pixel-gray');
-    // this.style.backgroundColor = `rgb(0, 0, 0, .5)`;
-    this.style.backgroundColor = '#d3d3d3';
+    // NOTE = = = = = Need to reduce by 25 for each time it re-passes
+    this.style.backgroundColor = `rgb(230, 230, 230)`;
+
 }
 
 function erasePixels() {
-    // this.classList.remove(...classColors);
-    // this.classList.add('pixel-black');
     this.style.backgroundColor = '#ffffff';
+}
+function removeListeners() {
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', blackPixels)) 
+    gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', rainbowPixels)) 
+    gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', grayPixels))
 }
 
 function sizePrompt (gridNumber, gridArea, color) {
@@ -114,12 +105,7 @@ colorButtons.forEach(colorButton => colorButton.addEventListener('click', update
 sizeButton.addEventListener('click', sizePrompt);
 clearButton.addEventListener('click', eraseColor);
 
-console.log(container.clientWidth);
-// container.style.height = container.clientWidth;
-// container.setAttribute('height', container.clientWidth);
-
 // To Do List
-// clean up logic for adding class names vs. styles in javascript
 // grayscale button: 10% of black to it so that only after 10 passes is the square completely black
 // Add color picker, so user can choose any color
 // A slide bar for pixel size
