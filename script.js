@@ -48,9 +48,41 @@ function rainbowPixels() {
 }
 
 function grayPixels() {
-    // NOTE = = = = = Need to reduce by 25 for each time it re-passes
-    this.style.backgroundColor = `rgb(230, 230, 230)`;
-
+    // maybe add a class name to detect if process has started
+    // remove class name from other all color functions - or parent function?
+    switch (this.style.backgroundColor) {
+        case 'rgb(225, 225, 225)':
+            this.style.backgroundColor = `rgb(200, 200, 200)`;
+            break;
+        case 'rgb(200, 200, 200)':
+            this.style.backgroundColor = `rgb(175, 175, 175)`;
+            break;
+        case 'rgb(175, 175, 175)':
+            this.style.backgroundColor = `rgb(150, 150, 150)`;
+            break;
+        case 'rgb(150, 150, 150)':
+            this.style.backgroundColor = `rgb(125, 125, 125)`;
+            break;
+        case 'rgb(125, 125, 125)':
+            this.style.backgroundColor = `rgb(100, 100, 100)`;
+            break;
+        case 'rgb(100, 100, 100)':
+            this.style.backgroundColor = `rgb(75, 75, 75)`;
+            break;
+        case 'rgb(75, 75, 75)':
+            this.style.backgroundColor = `rgb(50, 50, 50)`;
+            break;
+        case 'rgb(50, 50, 50)':
+            this.style.backgroundColor = `rgb(25, 25, 25)`;
+            break;
+        case 'rgb(25, 25, 25)':
+            this.style.backgroundColor = `rgb(0, 0, 0)`;
+            break;
+        default:
+            this.style.backgroundColor = `rgb(225, 225, 225)`;
+            break;
+    }
+    
 }
 
 function erasePixels() {
