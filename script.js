@@ -165,9 +165,7 @@ slider.addEventListener('mousemove', sliderColor);
 
 // To Do List
 // Takes a long time for re-sizing to load
-// Would using var help with re-declaring variables
+// Would using var help with re-declaring variables do i need all the variables declared?
 // refactor grayscale to use data-set number * 10 for gradient.
 // Mobile touch screens name change to "Touch-O-Sketch"
-// make pixel slider count down 50 - 10.
-// do i need all the variables declared?
 // change button borders
