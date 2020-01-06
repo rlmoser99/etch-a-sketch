@@ -164,7 +164,10 @@ slider.addEventListener('mouseup', pixelSize);
 slider.addEventListener('mousemove', sliderColor);
 
 // To Do List
-// re-sizing breaks hover colors and clear button -super slow?
+// Takes a long time for re-sizing to load
 // Would using var help with re-declaring variables
 // refactor grayscale to use data-set number * 10 for gradient.
 // Mobile touch screens name change to "Touch-O-Sketch"
+// make pixel slider count down 50 - 10.
+// do i need all the variables declared?
+// change button borders
