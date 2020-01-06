@@ -5,6 +5,8 @@ const clearButton = document.querySelector('.clear');
 const gridColor = document.querySelector('.grid-color')
 const userColorPicker = document.querySelector('#input-color')
 colorButtons = document.querySelectorAll('.color-choice');
+var slider = document.querySelector('#sizeRange')
+// var sliderOutput = slider.querySelector("value")
 let gridNumber;
 let gridArea;
 var userPixel;
@@ -21,7 +23,9 @@ function createGrid (gridNumber, gridArea, color) {
 }
 
 // Create default grid on page load
-createGrid(10, 100, 'default');
+createGrid(slider.value, (slider.value * slider.value), 'default');
+
+
 
 function colorGrid(color) {
     let gridPixels = container.querySelectorAll('div');
@@ -164,6 +168,15 @@ function userColorSelection(event) {
     createGrid(gridNumber, gridArea, userPixel);
 }
 
+function pixelSize(color) {
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.remove());
+    console.log(slider.value);
+    createGrid(slider.value, (slider.value * slider.value), color);
+}
+
+slider.addEventListener('mouseup', pixelSize);
+
 // Event Listeners
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', updateColor))
 sizeButton.addEventListener('click', sizePrompt);
@@ -176,3 +189,4 @@ userColorPicker.addEventListener('change', userColorSelection, false)
 // A slide bar for pixel size
 // refactor grayscale to use data-set number * 10 for gradient.
 // Mobile touch screens name change to "Touch-O-Sketch"
+// on mobile if you cancel out of size prompt, all pixels disappear
