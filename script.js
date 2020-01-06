@@ -1,15 +1,14 @@
 // Page Set-Up 
 const container = document.querySelector('.container');
-const sizeButton = document.querySelector('.size');
 const clearButton = document.querySelector('.clear');
 const gridColor = document.querySelector('.grid-color')
 const userColorPicker = document.querySelector('#input-color')
 colorButtons = document.querySelectorAll('.color-choice');
 var slider = document.querySelector('#sizeRange')
-// var sliderOutput = slider.querySelector("value")
 let gridNumber;
 let gridArea;
 var userPixel;
+var color = 'black';
 
 function createGrid (gridNumber, gridArea, color) { 
     for (let i = 1; i <= gridArea; i++) {
@@ -18,18 +17,15 @@ function createGrid (gridNumber, gridArea, color) {
         container.style.gridTemplateRows = `repeat(${gridNumber}, 1fr)`;
         container.insertAdjacentElement('beforeend', gridItem);
     } 
-    let gridPixels = container.querySelectorAll('div');
+    var gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', colorGrid(color)));
 }
 
 // Create default grid on page load
-createGrid(slider.value, (slider.value * slider.value), 'default');
-
-
+createGrid(slider.value, (slider.value * slider.value), color);
 
 function colorGrid(color) {
-    let gridPixels = container.querySelectorAll('div');
-    // console.log(userPixel);
+    var gridPixels = container.querySelectorAll('div');
     if (!color) {
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels))
     } else if (color === 'black' || color === 'default'){
@@ -52,16 +48,6 @@ function colorGrid(color) {
         gridPixels.forEach(gridPixel => gridPixel.addEventListener('mouseover', blackPixels))
     }
 }
-
-// Don't think this is neeeded
-// function removeGray() {
-//     let gridPixels = container.querySelectorAll('div');
-//     gridPixels.forEach(function(gridPixel) {
-//         if (gridPixel.classList.value === 'gray-pixel') {
-//             gridPixel.classList.remove('gray-pixel')  
-//         }
-//     })
-// }
 
 function blackPixels() {
     this.style.backgroundColor = '#000000';
@@ -129,14 +115,6 @@ function removeListeners() {
     gridPixels.forEach(gridPixel => gridPixel.removeEventListener('mouseover', erasePixels)) 
 }
 
-function sizePrompt (gridNumber, gridArea, color) {
-    let gridPixels = container.querySelectorAll('div');
-    gridPixels.forEach(gridPixel => gridPixel.remove());
-    gridNumber = prompt('How many squares would you like on each side?')
-    gridArea = gridNumber * gridNumber;
-    createGrid(gridNumber, gridArea, color)
-}
-
 function eraseAllColor() {
     let gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = '#ffffff');
@@ -145,20 +123,17 @@ function eraseAllColor() {
 // Color Choices
 function updateColor(event) {
     switch (event.target.dataset.color) {
-        case 'black':
-            createGrid(gridNumber, gridArea, 'black')
-            break;
         case 'rainbow':
-            createGrid(gridNumber, gridArea, 'rainbow')
-            break;
+            colorGrid('rainbow');
+            break;  
         case 'gray':
-            createGrid(gridNumber, gridArea, 'gray')
+            colorGrid('gray');
             break;
         case 'eraser':
-            createGrid(gridNumber, gridArea, 'eraser')
+            colorGrid('eraser');
             break;
         default:
-            createGrid(gridNumber, gridArea, 'black')
+            colorGrid('black');
             break;
     }    
 }
@@ -175,18 +150,21 @@ function pixelSize(color) {
     createGrid(slider.value, (slider.value * slider.value), color);
 }
 
-slider.addEventListener('mouseup', pixelSize);
+function sliderColor() {
+    var sliderNumber = ((slider.value - 10) / 40) * 100;
+    var sliderColor = `linear-gradient(90deg, #aaaaaa 0 ${sliderNumber}%, #ff0000 ${sliderNumber}% 100%)`
+    slider.style.background = sliderColor;
+}
 
 // Event Listeners
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', updateColor))
-sizeButton.addEventListener('click', sizePrompt);
 clearButton.addEventListener('click', eraseAllColor);
 userColorPicker.addEventListener('change', userColorSelection, false)
+slider.addEventListener('mouseup', pixelSize);
+slider.addEventListener('mousemove', sliderColor);
 
 // To Do List
 // re-sizing breaks hover colors and clear button -super slow?
 // Would using var help with re-declaring variables
-// A slide bar for pixel size
 // refactor grayscale to use data-set number * 10 for gradient.
 // Mobile touch screens name change to "Touch-O-Sketch"
-// on mobile if you cancel out of size prompt, all pixels disappear

@@ -12,9 +12,6 @@
 
 <body>
     <h1 class="mouse-o-sketch">Mouse-O-Sketch</h1>
-    <div class="size-container">
-        <input type="range" min="10" max="50" value="10" id="sizeRange" class="slider">
-    </div>
     <div class="buttons">
         <button class="color-choice" data-color="black" type="button">Black</button>
         <button class="color-choice" data-color="rainbow" type="button">Rainbow</button>
@@ -26,10 +23,11 @@
         <div class="container">
         </div>
     </div>
-    <div class="buttons">
-        <button class="clear" type="button">Clear</button>
-        <button class="size" type="button">Size</button>
+    <div class="size-container">
+        <input type="range" min="10" max="50" value="10" id="sizeRange" class="slider">
     </div>
+    <button class="clear" type="button">Clear</button>
+
 
 
     <script src="script.js"></script>
