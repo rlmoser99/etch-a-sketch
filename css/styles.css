@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: url(../img/wild_oliva/wild_oliva.png);
+    background-image: url(../img/wild_oliva/wild_oliva_@2X.png);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,22 +25,13 @@ body {
     color: red;
 }
 
-/* .container {
-    display: grid;
-    /* border-radius: 10px; */
-    /* width: 100%; */
-    /* height: 100%; */
-    /* position: absolute; */
-    /* background-color: white; */
-    /* border: 3px solid gray; */
-/* } */
-
 .container {
     display: grid;
+    border-radius: 10px;
     width: 100%;
     height: 100%;
+    position: absolute;
     background-color: white;
-    border: 3px solid gray;
 }
 
 .container-wrapper {
@@ -50,7 +41,7 @@ body {
     position: relative;
 }
 
-/* .container-wrapper:before {
+.container-wrapper:before {
     content: '';
     position: absolute;
     top: -15px;
@@ -59,9 +50,9 @@ body {
     left: -15px;
     background-color: #ffffff;
     z-index: -1;
-} */
+}
 
-/* .container-wrapper::after {
+.container-wrapper::after {
     content: '';
     position: absolute;
     top: -15px;
@@ -71,11 +62,11 @@ body {
     background-color: #ffffff;
     z-index: -2;
     /* filter: blur(5px); */
-} */
+}
 
-/* .container-wrapper::before, .container-wrapper::after {
+.container-wrapper::before, .container-wrapper::after {
     background: linear-gradient(45deg, #aaaaaa 0 50%, #75757b 50% 100%);
-} */
+}
 
 .container > * {
     height: 100%;
