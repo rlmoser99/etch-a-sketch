@@ -27,10 +27,12 @@ body {
 
 .container {
     display: grid;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     width: 100%;
     height: 100%;
     position: absolute;
+    background-color: white;
+    border: 3px solid gray;
 }
 
 .container-wrapper {
@@ -40,7 +42,7 @@ body {
     position: relative;
 }
 
-.container-wrapper:before {
+/* .container-wrapper:before {
     content: '';
     position: absolute;
     top: -15px;
@@ -49,9 +51,9 @@ body {
     left: -15px;
     background-color: #ffffff;
     z-index: -1;
-}
+} */
 
-.container-wrapper::after {
+/* .container-wrapper::after {
     content: '';
     position: absolute;
     top: -15px;
@@ -61,11 +63,11 @@ body {
     background-color: #ffffff;
     z-index: -2;
     /* filter: blur(5px); */
-}
+} */
 
-.container-wrapper::before, .container-wrapper::after {
+/* .container-wrapper::before, .container-wrapper::after {
     background: linear-gradient(45deg, #aaaaaa 0 50%, #75757b 50% 100%);
-}
+} */
 
 .container > * {
     height: 100%;
@@ -90,39 +92,39 @@ button {
     margin: 0 auto;
 }
 
-#input-color {
+/* #input-color {
     border: none;
     height: 25px;
     width: 25px;
     padding: 0;
-}
+} */
 
 /* Options Under Pixel Container */
-.grid-options {
+/* .grid-options {
     width: 75vw;
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
     align-items: center;
-}
+} */
 
-.clear {
+/* .clear {
     height: 42px;
-}
+} */
 
-.size-container {
+/* .size-container {
     width: 60vw;
-}
+} */
 
-.size-container p {
+/* .size-container p {
     color: white;
     font-size: 16px;
     font-family: Audiowide, cursive;
     text-align: center;
     margin: 7px 0;
-}
+} */
 
-.slider {
+/* .slider {
     -webkit-appearance: none;
     width: 100%;
     height: 15px;
@@ -133,10 +135,10 @@ button {
     transition: 0.2s;
     border-radius: 7px;
     /* box-shadow: 0px 1px 10px 1px white; */
-}
+} */
 
 /* Chrome */
-.slider::-webkit-slider-thumb {
+/* .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 30px;
@@ -145,16 +147,16 @@ button {
     /* border: 1px solid black; */
     border-radius: 50%;
     cursor: pointer;
-}
+} */
 
 /* Firefox  */
-slider::-moz-range-thumb {
+/* slider::-moz-range-thumb {
     width: 15px;
     height: 30px;
     background: white;
     border-radius: 7px;
     cursor: pointer;
-}
+} */
 
 
 
