@@ -19,23 +19,18 @@ function createGrid (gridNumber) {
 function colorGrid() {
     switch (color) {
         case 'rainbow':
-            color = 'rainbow';
             this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
             break;  
         case 'gray':
-            color = 'gray';
-            console.log(color);
+            this.style.backgroundColor = `hsl(0, 0%, 90%)`;
             break;
         case 'eraser':
-            color = 'eraser';
             this.style.backgroundColor = '#ffffff';
             break;
         default:
-            color = 'black';
             this.style.backgroundColor = '#000000';
             break;
     } 
-
 }
 
 function eraseAllColor() {
@@ -43,6 +38,7 @@ function eraseAllColor() {
     gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = '#ffffff');
 }
 
+// Updates "pixel" size
 function sizePrompt (gridNumber) {
     var gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.remove());
@@ -50,7 +46,7 @@ function sizePrompt (gridNumber) {
     gridArea = gridNumber * gridNumber;
     createGrid(gridNumber);
 }
-
+// Updates color variable when a color button is clicked
 function changeColor(event) {
     switch (event.target.dataset.color) { 
         case 'rainbow':
