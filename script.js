@@ -22,7 +22,17 @@ function colorGrid() {
             this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
             break;  
         case 'gray':
-            this.style.backgroundColor = `hsl(0, 0%, 90%)`;
+            if (this.style.backgroundColor.match(/rgba/)) {
+                let currentOpacity = Number(this.style.backgroundColor.slice(-4, -1));
+                if (currentOpacity <= 0.9) {
+                    this.style.backgroundColor = `rgba(0, 0, 0, ${currentOpacity + 0.1})`;
+                    this.classList.add('gray');
+                }
+            } else if (this.classList == 'gray') {
+                return;
+            } else {
+                this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';  
+            }
             break;
         case 'eraser':
             this.style.backgroundColor = '#ffffff';
