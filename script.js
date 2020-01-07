@@ -1,7 +1,7 @@
 const container = document.querySelector('.container');
 const colorButtons = document.querySelectorAll('.color-choice');
 const clearButton = document.querySelector('.clear');
-const sizeButton = document.querySelector('.size');
+var slider = document.querySelector('#sizeRange')
 var color = 'black';
 
 function createGrid (gridNumber) { 
@@ -43,19 +43,12 @@ function colorGrid() {
     } 
 }
 
+// Clear Button
 function eraseAllColor() {
     var gridPixels = container.querySelectorAll('div');
     gridPixels.forEach(gridPixel => gridPixel.style.backgroundColor = '#ffffff');
 }
 
-// Updates "pixel" size
-function sizePrompt (gridNumber) {
-    var gridPixels = container.querySelectorAll('div');
-    gridPixels.forEach(gridPixel => gridPixel.remove());
-    gridNumber = prompt('How many squares would you like on each side?');
-    gridArea = gridNumber * gridNumber;
-    createGrid(gridNumber);
-}
 // Updates color variable when a color button is clicked
 function changeColor(event) {
     switch (event.target.dataset.color) { 
@@ -74,10 +67,17 @@ function changeColor(event) {
     } 
 }
 
+function pixelSize() {
+    let gridPixels = container.querySelectorAll('div');
+    gridPixels.forEach(gridPixel => gridPixel.remove());
+    createGrid(slider.value);
+}
+
 // On Page Load - default size
 createGrid(10);
 
 // Event Listeners
 clearButton.addEventListener('click', eraseAllColor);
-sizeButton.addEventListener('click', sizePrompt);
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', changeColor));
+slider.addEventListener('mouseup', pixelSize);
+
