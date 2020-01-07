@@ -1,7 +1,8 @@
 const container = document.querySelector('.container');
 const colorButtons = document.querySelectorAll('.color-choice');
+const userColorPicker = document.querySelector('#input-color');
 const clearButton = document.querySelector('.clear');
-var slider = document.querySelector('#sizeRange')
+var slider = document.querySelector('#sizeRange');
 var color = 'black';
 
 function createGrid (gridNumber) { 
@@ -20,6 +21,7 @@ function colorGrid() {
     switch (color) {
         case 'rainbow':
             this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            this.classList.remove('gray');
             break;  
         case 'gray':
             if (this.style.backgroundColor.match(/rgba/)) {
@@ -28,7 +30,7 @@ function colorGrid() {
                     this.style.backgroundColor = `rgba(0, 0, 0, ${currentOpacity + 0.1})`;
                     this.classList.add('gray');
                 }
-            } else if (this.classList == 'gray') {
+            } else if (this.classList == 'gray' && this.style.backgroundColor == 'rgb(0, 0, 0)') {
                 return;
             } else {
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';  
@@ -36,9 +38,15 @@ function colorGrid() {
             break;
         case 'eraser':
             this.style.backgroundColor = '#ffffff';
+            this.classList.remove('gray');
+            break;
+        case 'black':
+            this.style.backgroundColor = '#000000';
+            this.classList.remove('gray');
             break;
         default:
-            this.style.backgroundColor = '#000000';
+            this.style.backgroundColor = color;
+            this.classList.remove('gray');
             break;
     } 
 }
@@ -73,6 +81,10 @@ function pixelSize() {
     createGrid(slider.value);
 }
 
+function userColorSelection(event) {
+    color = event.target.value;
+}
+
 // On Page Load - default size
 createGrid(10);
 
@@ -80,4 +92,4 @@ createGrid(10);
 clearButton.addEventListener('click', eraseAllColor);
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', changeColor));
 slider.addEventListener('mouseup', pixelSize);
-
+userColorPicker.addEventListener('change', userColorSelection, false)

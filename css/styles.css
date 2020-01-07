@@ -100,12 +100,12 @@ button {
     margin: 0 auto;
 }
 
-/* #input-color {
+#input-color {
     border: none;
     height: 25px;
     width: 25px;
     padding: 0;
-} */
+}
 
 /* Options Under Pixel Container */
 .grid-options {
