@@ -85,15 +85,29 @@ function userColorSelection(event) {
     color = event.target.value;
 }
 
+function buttonHover() {
+    this.style.border = '1px solid #ffffff'
+}
+
+function buttonStandard() {
+    this.style.border = '1px solid #FF0000'
+}
+
 // On Page Load - default size
 createGrid(10);
 
 // Event Listeners
 clearButton.addEventListener('click', eraseAllColor);
+clearButton.addEventListener('mouseover', buttonHover);
+clearButton.addEventListener('mouseout', buttonStandard);
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', changeColor));
+colorButtons.forEach(colorButton => colorButton.addEventListener('mouseover', buttonHover));
+colorButtons.forEach(colorButton => colorButton.addEventListener('mouseout', buttonStandard));
 slider.addEventListener('mouseup', pixelSize);
 userColorPicker.addEventListener('change', userColorSelection, false)
 
 // To Do
 // Style Buttons
-// Re-factor width of container
+// Radial Gradient for slider circle
+// click event for user color picker
+
