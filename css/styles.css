@@ -98,6 +98,10 @@ button:focus, input:focus {
     box-shadow: 0 1px 10px 0 rgba(240, 240, 240, 1);
 }
 
+a {
+    color: black;
+}
+
 .buttons {
     display: flex;
     justify-content: space-between;
