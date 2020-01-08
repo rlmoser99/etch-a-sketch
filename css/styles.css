@@ -8,6 +8,10 @@
     font-weight: 400;
 }
 
+:root {
+    --content-width: 400px;
+}
+
 body {
     background-image: url(../img/wild_oliva/wild_oliva.png);
     display: flex;
@@ -36,6 +40,8 @@ body {
 .container-wrapper {
     height: 75vw;
     width: 75vw;
+    max-height: var(--content-width);;
+    max-width: var(--content-width);
     margin: 30px auto;
     position: relative;
 }
@@ -87,6 +93,7 @@ button {
     display: flex;
     justify-content: space-between;
     width: calc(75vw + 40px); /* Accounts for container border & button margin */
+    max-width: calc(var(--content-width) + 40px);
     margin: 0 auto;
     flex-wrap: wrap;
 }
@@ -109,6 +116,7 @@ button {
     justify-content: space-between;
     margin-bottom: 30px;
     align-items: center;
+    max-width: calc(var(--content-width) + 40px);
 }
 
 .grid-options > * {
@@ -167,25 +175,8 @@ slider::-moz-range-thumb {
     cursor: pointer;
 }
 
-/* 
-@media only screen and (min-width: 500px) {
-    .container {
-        height: 60vw;
-        width: 60vw;
+@media only screen and (min-width: 1500px) {
+    :root {
+        --content-width: 500px;
     }
-
-    .buttons {
-        width: 60vw;
-    }
-} */
-
-/* @media only screen and (min-width: 700px) {
-    .container {
-        height: 70vw;
-        width: 70vw;
-    }
-
-    .buttons {
-        width: 70vw;
-    }
-} */
+}
