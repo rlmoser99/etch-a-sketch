@@ -93,3 +93,7 @@ clearButton.addEventListener('click', eraseAllColor);
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', changeColor));
 slider.addEventListener('mouseup', pixelSize);
 userColorPicker.addEventListener('change', userColorSelection, false)
+
+// To Do
+// Style Buttons
+// Re-factor width of container
