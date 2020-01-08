@@ -21,6 +21,10 @@ body {
     min-height: 100vh;
 }
 
+a {
+    color: black;
+}
+
 .mouse-o-sketch {
     font-family: Audiowide, cursive;
     font-size: 2.5em;
@@ -29,6 +33,7 @@ body {
     color: red;
 }
 
+/* Pixel Container */
 .container {
     display: grid;
     width: 100%;
@@ -66,19 +71,20 @@ body {
     left: -15px;
     background-color: #ffffff;
     z-index: -2;
-    /* filter: blur(5px); */
 }
 
 .container-wrapper::before, .container-wrapper::after {
     background: linear-gradient(45deg, #aaaaaa 0 50%, #75757b 50% 100%);
 }
 
+/* Pixel or divs */
 .container > * {
     height: 100%;
     background-color: #ffffff;
     transition: all 0.5s;
 }
 
+/* Buttons & Button Wrapper */
 button {
     font-family: Audiowide, cursive;
     padding: 5px;
@@ -93,19 +99,13 @@ button {
 
 button:focus, input:focus {
     outline: none ;
-    /* outline-width: 0; */
-    /* outline-color: white; */
     box-shadow: 0 1px 10px 0 rgba(240, 240, 240, 1);
-}
-
-a {
-    color: black;
 }
 
 .buttons {
     display: flex;
     justify-content: space-between;
-    width: calc(75vw + 40px); /* Accounts for container border & button margin */
+    width: calc(75vw + 40px);
     max-width: calc(var(--content-width) + 40px);
     margin: 0 auto;
     flex-wrap: wrap;
@@ -128,7 +128,7 @@ input[type="color" i] {
 
 /* Options Under Pixel Container */
 .grid-options {
-    width: calc(75vw + 40px); /* Accounts for container border & button margin */
+    width: calc(75vw + 40px);
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
@@ -140,10 +140,7 @@ input[type="color" i] {
     flex: 1 1 auto;
 }
 
-/* .clear {
-    height: 42px;
-} */
-
+/* Pixel Size Slider */
 .size-container {
     width: 55vw;
     padding-left: 10px;
@@ -165,10 +162,8 @@ input[type="color" i] {
     background: red;
     outline: none;
     transform: rotate(180deg);
-    /* opacity: 0.7; */
     transition: 0.2s;
     border-radius: 7px;
-    /* box-shadow: 0px 1px 10px 1px white; */
 }
 
 /* Chrome */
@@ -178,12 +173,11 @@ input[type="color" i] {
     width: 30px;
     height: 30px;
     background: white;
-    /* border: 1px solid black; */
     border-radius: 50%;
     cursor: pointer;
 }
 
-/* Firefox  */
+/* Firefox */
 slider::-moz-range-thumb {
     width: 15px;
     height: 30px;

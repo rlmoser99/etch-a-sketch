@@ -86,11 +86,11 @@ function userColorSelection(event) {
 }
 
 function buttonHover() {
-    this.style.border = '1px solid #ffffff'
+    this.style.border = '1px solid #ffffff';
 }
 
 function buttonStandard() {
-    this.style.border = '1px solid #FF0000'
+    this.style.border = '1px solid #FF0000';
 }
 
 // On Page Load - default size
@@ -104,10 +104,6 @@ colorButtons.forEach(colorButton => colorButton.addEventListener('click', change
 colorButtons.forEach(colorButton => colorButton.addEventListener('mouseover', buttonHover));
 colorButtons.forEach(colorButton => colorButton.addEventListener('mouseout', buttonStandard));
 slider.addEventListener('mouseup', pixelSize);
-userColorPicker.addEventListener('change', userColorSelection, false)
-
-// To Do
-// Style Buttons
-// Radial Gradient for slider circle
-// click event for user color picker
+userColorPicker.addEventListener('change', userColorSelection, false);
+userColorPicker.addEventListener('input', userColorSelection, false);
 
